@@ -1,0 +1,159 @@
+/* Variables */
+$color-principal: navy;
+$color-titulo: #fff;
+$color-secundario: #333;
+
+$tema: 'oscuro';
+
+/* Mixins */
+@mixin fuentes($size: 14px) {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 300;
+    color: $color-titulo;
+    font-size: $size;
+}
+
+@function alturaMaxima($altura) {
+    @return $altura * 1.10;
+}
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    @include fuentes(20px);
+    @if $tema == 'claro' {
+        background-color: lightyellow;
+        color: black;
+    } 
+    @else {
+        background-color: $color-principal;
+        color: $color-titulo;
+    }
+    
+    padding:10px;
+}
+
+
+.topnav {
+    overflow: hidden;
+    background-color: $color-secundario;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: $color-titulo;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+#nombre {
+    padding:10px;
+    font-size: 2rem;
+}
+.bloque {
+    display:grid;
+    background-color: lightgray;
+    justify-content: space-around;
+    flex-direction: row;
+    height: 100%;
+    grid-template-areas: 
+    
+    "c c"
+    "d d"
+    "e f"
+    "a b";
+    row-gap: 5em;
+    align-items: center;
+    column-gap: 3em;
+}
+.item {
+    background-color: cadetblue;
+    padding: 1rem;
+    height: alturaMaxima(300px);
+    flex-basis: 0;
+    flex-grow: 1;
+}
+.tituloItem {
+    @extend header;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin: 0.5rem;
+    font-size: 12px;
+}
+.imgItem {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+}
+section {
+    background-color: $color-principal;
+}
+.imgTexto {
+    width: 20rem;
+    float: left;
+    margin: 2rem;
+}
+.textoItem {
+    @include fuentes(16px);
+    width:100%;
+}
+.fila {
+    display:flex;
+    justify-content: space-around;
+}
+.itemAncho {
+    flex-grow: 2;
+    flex-basis: 0;
+}
+.a {
+    grid-area: a;
+}
+.b {
+    grid-area: b;
+}
+.c {
+    grid-area: c;
+}
+.d {
+    grid-area: d;
+}
+.e {
+    grid-area: e;
+}
+.f {
+    grid-area: f;
+}
+
+@for $i from 1 through 6 {
+    .item-#{$i} {
+        background-color: #04AA6D;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 13px;
+    }
+}
+
+.item-4 {
+    background-color: red;
+}
